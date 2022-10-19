@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename= '/css/style.css')}}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+    <title>view</title>
+</head>
+<body class="loginbox">
+    <div class="head">
+        <div class="twobuttons">
+            <form action="/">
+                <input type="submit" value="Dashboard" class="button2">
+            </form>
+            <form action="/logout">
+                <input type="submit" value="Logout" class="button2">
+            </form>
+        </div>
+    </div>
+    <div class="flexcenter">
+        <div class="borderbox">
+            <p class="whitelabel" id="marginsplus">${{car.price}}</p>
+            <p class="whitelabel" id="margins">Model: {{car.model}}</p>
+            <p class="whitelabel" id="margins">Make: {{car.make}}</p>
+            <p class="whitelabel" id="margins">Year: {{car.year}}</p>
+            <label for="description" class="whitelabel">Description: </label>
+            <p class="whitelabel" id="margins">{{car.description}}</p>
+            <div class="bottomrow">
+                <p class="whitelabel2" id="margins">Seller: {{car.names[0]}} {{car.names[1]}}</p>
+                <form action="/purchase/{{car.id}}">
+                    <input type="submit" value="purchase" class="button3">
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

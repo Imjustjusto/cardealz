@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename= '/css/style.css')}}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+    <title>login</title>
+</head>
+<body>
+    <div class="flex">
+        <div class="loginbox">
+            <h1>Register</h1>
+            {% with messages = get_flashed_messages() %}
+                {%if messages %}
+                    {% for message in messages %}
+                        <p class="red">{{message}}</p>
+                    {%endfor%}
+                {%endif%}
+            {%endwith%}
+                <form action="/create" method="post">
+                <label for="fname" class="label">First Name:</label>
+                <input type="text" class="textbox" name="fname">
+                <label for="lname" class="label">Last Name:</label>
+                <input type="text" class="textbox" name="lname">
+                <label for="email" class="label">Email:</label>
+                <input type="text" class="textbox" name="email">
+                <label for="password" class="label">Password:</label>
+                <input type="text" class="textbox" name="password">
+                <label for="password2" class="label">Confirm Password:</label>
+                <input type="text" class="textbox" name="password2">
+                <input type="submit" class="butt" value="Register">
+            </form>
+        </div>
+        <div class="loginbox">
+            <h1 class="log">Login</h1>
+            <form action="/login" method="post">
+                <label for="email" class="label">Email:</label>
+                <input type="text" class="textbox" name="email">
+                <label for="password" class="label">Password:</label>
+                <input type="text" class="textbox" name="password">
+                <input type="submit" class="butt" value="Login">
+            </form>
+        </div>
+    </div>
+</body>
+</html>

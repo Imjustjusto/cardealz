@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename= '/css/style.css')}}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+    <title>purchases</title>
+</head>
+<body class="loginbox">
+    <div class="sbetween">
+        <h1>{{user.first_name}}'s Purchases</h1>
+        <div class="flex">
+            <form action="/">
+                <input type="submit" value="Dashboard" class="button2">
+            </form>
+            <form action="/logout">
+                <input type="submit" value="Logout" class="button2">
+            </form>
+        </div>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Make</th>
+                <th>Model</th>
+                <th>Year</th>
+            </tr>
+        </thead>
+        <tbody>
+            {%for purchase in purchases%}
+            <tr>
+                <td>{{purchase.make}}</td>
+                <td>{{purchase.model}}</td>
+                <td>{{purchase.year}}</td>
+            </tr>
+            {%endfor%}
+        </tbody>
+    </table>
+</body>
+</html>

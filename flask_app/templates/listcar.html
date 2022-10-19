@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename= '/css/style.css')}}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+    <title>list</title>
+</head>
+<body class="loginbox">
+    <div class="sbetween">
+        <h1>Put Car Up For Sale</h1>
+        <div class="flex">
+            <form action="/">
+                <input type="submit" value="Dashboard" class="button2">
+            </form>
+            <form action="/logout">
+                <input type="submit" value="Logout" class="button2">
+            </form>
+        </div>
+    </div>
+    <form action="/createcar" method="post" class="box">
+        <label class="whitelabel" for="price">Price:</label>
+        <input type="number" name="price" class="singlebox" id="smaller" required>
+        <label class="whitelabel" for="model">Model:</label>
+        <input type="text" name="model" class="singlebox" required>
+        <label class="whitelabel" for="make">Make:</label>
+        <input type="text" name="make" class="singlebox" required>
+        <label class="whitelabel" for="year">Year:</label>
+        <input type="number" name="year" class="singlebox" id="smaller" required>
+        <label class="whitelabel" for="description">Description:</label>
+        <input type="text" name="description" class="singlebox" required>
+        <input type="submit" value="List Car" class="button3">
+    </form>
+</body>
+</html>

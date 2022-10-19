@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename= '/css/style.css')}}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+    <title>Welcome</title>
+</head>
+<body class="loginbox">
+    <div class="sbetween">
+        <h1>Welcome to Car Dealz, {{user.first_name}}!!!</h1>
+        <div class="twobuttons">
+            <form action="/purchases">
+                <input type="submit" value="My Purchases" class="button2" id="longer">
+            </form>
+            <form action="/logout">
+                <input type="submit" value="Logout" class="button2">
+            </form>
+        </div>
+    </div>
+    <h1>Cars For Sale</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Model</th>
+                <th>Year</th>
+                <th>Seller</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {%for car in cars%}
+            <tr>
+                <td>{{car.model}}</td>
+                <td>{{car.year}}</td>
+                <td>{{car.first_name}}</td>
+                <td class="center">
+                    {%if car.id == car.car_id%}
+                    <p>SOLD</p>
+                    {%elif car.user_id != session['user']%}
+                        <form action="/view/{{car.id}}">
+                            <input type="submit" value="view" class="button1">
+                        </form>
+                    {%else%}
+                        <div class="twobuttons">
+                            <form action="/edit/{{car.id}}">
+                                <input type="submit" value="edit" class="button1">
+                            </form>
+                            <form action="/delete/{{car.id}}">
+                                <input type="submit" value="delete" class="button1">
+                            </form>
+                        </div>
+                    {%endif%}
+                </td>
+            </tr>
+            {%endfor%}
+        </tbody>
+    </table>
+    {% with messages = get_flashed_messages() %}
+        {%if messages %}
+            {% for message in messages %}
+                <p class="red">{{message}}</p>
+            {%endfor%}
+        {%endif%}
+    {%endwith%}
+    <form action="/add">
+        <input type="submit" value="List a Car" class="button2" id="minmargin">
+    </form>
+</body>
+</html>
