@@ -10,6 +10,8 @@ bcrypt = Bcrypt(app)
 
 @app.route('/')
 def display():
+    if not session.get('user'):
+        return render_template('login.html')
     if session['user'] > 0:
         user_id = session['user']
         return redirect(f'/welcome/{user_id}')
